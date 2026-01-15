@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ナンプラー</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" href="icon-192.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="start-screen">
+        <div class="start-container">
+            <h1>数独</h1>
+            <div class="level-selector">
+                <button class="level-btn active" onclick="selectLevel(this, '0.6')">初級</button>
+                <button class="level-btn" onclick="selectLevel(this, '0.4')">中級</button>
+                <button class="level-btn" onclick="selectLevel(this, '0.3')">上級</button>
+            </div>
+            <button class="btn-start" onclick="initGame()">はじめる</button>
+        </div>
+    </div>
+
+    <div id="game-screen">
+        <div id="pause-overlay" class="overlay">
+            <h2 style="font-weight: 300; margin-bottom: 20px; letter-spacing: 0.2em;">一時停止</h2>
+            <button class="overlay-btn btn-primary" onclick="togglePause()">再開する</button>
+            <button class="overlay-btn btn-secondary" onclick="backToTitle()">タイトルに戻る</button>
+        </div>
+
+        <div id="gameover-overlay" class="overlay">
+            <p style="margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 0.1em;">ライフがなくなりました</p>
+            <button class="overlay-btn btn-primary" onclick="retryGame()">もう一度挑戦</button>
+            <button class="overlay-btn btn-secondary" onclick="backToTitle()">タイトルに戻る</button>
+        </div>
+
+        <div class="header-info">
+            <div id="hearts-box"><span class="heart">●</span><span class="heart">●</span><span class="heart">●</span></div>
+            <div class="timer-display" id="timer-display">00:00</div>
+            <button class="pause-trigger" onclick="togglePause()">PAUSE</button>
+        </div>
+
+        <div id="board" class="board"></div>
+
+        <div class="keypad" id="keypad">
+            <button class="key" onclick="pressNumber(1)">1</button>
+            <button class="key" onclick="pressNumber(2)">2</button>
+            <button class="key" onclick="pressNumber(3)">3</button>
+            <button class="key" onclick="pressNumber(4)">4</button>
+            <button class="key" onclick="pressNumber(5)">5</button>
+            <button class="key" onclick="pressNumber(6)">6</button>
+            <button class="key" onclick="pressNumber(7)">7</button>
+            <button class="key" onclick="pressNumber(8)">8</button>
+            <button class="key" onclick="pressNumber(9)">9</button>
+            <button class="key" onclick="pressNumber('delete')">消</button>
+        </div>
+
+        <div class="bottom-controls">
+            <button id="memo-mode-btn" class="btn-mode" onclick="setMode('memo')">メモ</button>
+            <button id="entry-mode-btn" class="btn-mode active" onclick="setMode('entry')">入力</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').then(() => console.log('Ready'));
+        }
+    </script>
+</body>
+</html>
