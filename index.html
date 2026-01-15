@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ナンプラー</title>
-    
+
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="icon" type="image/png" href="icon-192.png">
 
+    <link rel="stylesheet" href="/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div id="start-screen">
@@ -42,7 +45,8 @@
         </div>
 
         <div class="header-info">
-            <div id="hearts-box"><span class="heart">●</span><span class="heart">●</span><span class="heart">●</span></div>
+            <div id="hearts-box"><span class="heart">●</span><span class="heart">●</span><span class="heart">●</span>
+            </div>
             <div class="timer-display" id="timer-display">00:00</div>
             <button class="pause-trigger" onclick="togglePause()">PAUSE</button>
         </div>
@@ -75,4 +79,5 @@
         }
     </script>
 </body>
+
 </html>
